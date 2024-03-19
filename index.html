@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Wizard - i-dizajn</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Invoice wizard <span> i-dizajn 2024.</span></h1>
+    <section id="user-interface">
+    <div id="subject-info" class="ui-containers">
+      <h3>Podatci korisnika:</h2>
+
+        <table>
+          <tr>
+            <td>
+              <label for="subject-name">Naziv subjekta:</label>
+            </td>
+            <td>
+              <input
+                type="text"
+                placeholder="Naziv poslovnog subjekta"
+                id="subject-name"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="subject-id">OIB subjekta:</label>
+            </td>
+            <td>
+              <input type="text" placeholder="OIB" id="subject-id" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="subject-address">Adresa sjedišta</label>
+            </td>
+            <td>
+              <input type="text" placeholder="Adresa sjedišta" id="subject-address" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <button onclick="addSubject()">Dodaj subjekt</button>
+            </td>
+          </tr>
+        </table>
+    </div>
+
+    <div id="service-info" class="ui-containers">
+      <h3>Podatci usluge:</h3>
+
+      <table>
+        <tr>
+          <td>
+            <label for="SelectService">Usluga: </label>
+          </td>
+          <td>
+            <input id="SelectService" type="text" list="all-services" placeholder="Odaberi uslugu"/>
+            <datalist id="all-services">
+              <option label="Izrada web mjesta do 2 stranice" value="1"></option>
+              <option label="Izrada web mjesta, više od 2 stranice" value="2"></option>
+              <option label="Dopuna web mjesta" value="3"></option>
+              <option label="Izrada web shopa" value="4"></option>
+              <option label="Izrada web aplikacije" value="5"></option>
+              <option
+                label="Sat programiranja"
+                value="6"
+              ></option>
+              <option label="Održavanje i administracija web mjesta" value="7"></option>
+              <option label="Audio produkcija" value="8"></option>
+              <option label="Video produkcija" value="9"></option>
+            </datalist>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="price-field">Cijena (PDV uračunat):</label>
+          </td>
+          <td>
+            <input type="text" name="price" id="price-field" placeholder="Cijena u €"/>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button onclick="addProduct();">Dodaj</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <button onclick="saveDocument()">Spremi dokument</button>
+          </td>
+        </tr>
+      </table>
+    </div>  
+  </section>
+
+
+    <hr>
+
+    <section id="client-invoice">
+      <div id="invoice-header">
+        <span>
+          <h4>Vaši podatci:</h4>
+          <p>
+            i-dizajn<br>
+            OIB: 68026481672<br>
+            Adresa sjedišta:<br>
+            Ul. braće Radić 25,<br>
+            10361 Sesvetski Kraljevec
+          </p>
+        </span>
+        <span>
+          <img id="logo-black" src="./images/logo.png">
+          <img id="logo-white" src="./images/logo_white.png">
+        </span>    
+      </div>
+
+      
+
+      <div id="document-type-selection">
+        <h4>Odaberite vrstu dokumenta</h4>
+        <button id="ponuda-selector" onclick="setDocTypePonuda()">Ponuda</button>
+        <button id="racun-selector" onclick="setDocTypeRacun()">Račun</button>
+      </div>
+
+      <hr>
+
+      <div id="client-invoice-info">
+        <h4 id="document-type-display">Vrsta dokumenta nije odabrana!</h4>
+        <table>
+          <tr>
+            <td>
+              <span>Naziv:</span>
+            </td>
+            <td>
+              <span id="subject-name-container"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>OIB:</span>
+            </td>
+            <td>
+              <span id="subject-id-container"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Adresa sjedišta:</span>
+            </td>
+            <td>
+              <span id="subject-address-container"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="invoice-expiration-date" id="date-display">Ponuda vrijedi do:</label>
+            </td>
+            <td>
+              <input type="date" name="date" id="invoice-expiration-date">
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <h4 id="invoice-status"></h4>
+
+    <div id="services-wrapper">
+      <div id="services-container">
+        <div class="service" id="invoice-titles">
+          <span class="service-name">Naziv usluge</span>
+          <span class="service-price">Cijena s PDV-om</span>
+          <span class="service-price">Iznos PDV-a</span>
+        </div>
+      </div>
+  
+      <div id="total-price-container-wrapper">
+        <div id="total-price-container" class="service">
+          <span class="service-name">Ukupno</span>
+          <span class="service-price" id="total-price">0.00 EUR</span>
+          <span class="service-price" id="total-pdv">0.00 EUR</span>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <footer>
+      <p>www.i-dizajn.com</p>
+      <p>info@i-dizajn.com</p>
+      <p>mob: +385 98 233 736</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

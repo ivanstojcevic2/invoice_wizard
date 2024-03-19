@@ -1,0 +1,218 @@
+@font-face {
+  font-family: CenturyGothic;
+  src: url(../fonts/GOTHICB.TTF);
+}
+
+html {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: CenturyGothic;
+  background-color: rgb(40, 40, 40);
+  color: rgb(140, 140, 140);
+}
+
+h1 span {
+  font-weight: 200;
+  font-size: 12px;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  width: 50%;
+  padding: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 25px;
+  background-color: rgb(0, 89, 255);
+  color: white;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: rgb(1, 75, 212);
+  transform: scale(1.02);
+}
+
+input[type="text"],
+input[type="date"] {
+  border: 2px solid rgb(0, 89, 255);
+  background-color: rgb(40, 40, 40);
+  color: rgb(140, 140, 140);
+  border-radius: 25px;
+  padding: 10px 15px;
+  box-shadow: inset 0px 2px 5px black;
+}
+
+hr {
+  border-top: 1px solid black;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#user-interface {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ui-containers {
+  width: 500px;
+}
+
+#invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#invoice-header img {
+  width: 120px;
+}
+
+#logo-black {
+  display: none;
+}
+
+#logo-white {
+  display: inline-block;
+}
+
+#client-invoice-info {
+  width: 500px;
+}
+
+#services-wrapper {
+  background-color: rgb(30, 30, 30);
+  border-radius: 25px;
+  padding: 2%;
+  width: 80%;
+  margin-left: 7.5%;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+#services-container,
+#total-price-container-wrapper {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.service {
+  border-bottom: 1px solid black;
+  margin: 0%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.service-name {
+  display: inline-block;
+  width: 55%;
+  text-align: left;
+}
+.service-price {
+  display: inline-block;
+  margin: 0px;
+  width: 22%;
+  text-align: left;
+}
+
+.delete-service-button {
+  padding: 10px 14px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  border: none;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.514);
+}
+
+.delete-service-button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  position: sticky;
+  margin-bottom: 0px;
+}
+footer p {
+  margin: 5%;
+}
+
+@media screen and (max-width: 767px) {
+  #services-wrapper {
+    width: 100%;
+    margin-left: 0px;
+  }
+  footer {
+    flex-direction: column;
+  }
+}
+
+@media print {
+  body {
+    font-size: 12px;
+    color: black;
+  }
+  h1 {
+    display: none;
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    box-shadow: none;
+  }
+
+  #user-interface {
+    display: none;
+  }
+
+  #logo-black {
+    display: inline-block;
+  }
+
+  #logo-white {
+    display: none;
+  }
+
+  #document-type-selection {
+    display: none;
+  }
+
+  #invoice-expiration-date {
+    border: none;
+  }
+
+  #services-wrapper {
+    background-color: white;
+    border-radius: 0px;
+    padding: 0px;
+    width: 100%;
+    margin-left: 0px;
+    box-shadow: none;
+  }
+
+  #services-container,
+  #total-price-container-wrapper {
+    width: 100%;
+  }
+
+  .delete-service-button {
+    display: none;
+  }
+}
