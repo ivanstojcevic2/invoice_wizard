@@ -8,7 +8,7 @@ html {
   margin: 0;
 }
 body {
-  font-family: Arial;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: rgb(40, 40, 40);
   color: rgb(140, 140, 140);
 }
